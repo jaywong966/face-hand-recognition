@@ -18,7 +18,7 @@ class SVM_predict():
         return self.gesture[result[0]]
 
     @staticmethod
-    def hand_bbox(hand):
+    def hand_box(hand):
         if np.sum(hand[:, 2]) > 21 * 0.5:
             rect = cv2.boundingRect(np.array(hand[:, :2]))
             return rect

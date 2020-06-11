@@ -58,7 +58,7 @@ class main():
                 # Turning coordinate into unit vector(right hand, left hand)
                 result = self.SVM_predict(hand_vector)      # predict result (Only predict right hand)
                 for hand in hands:
-                    hand_rect = self.SVM_predict.hand_bbox(hand[i])
+                    hand_rect = self.SVM_predict.hand_box(hand[i])
                     user_message[i][1] = result     # record gesture result
                     if hand_rect:
                         x, y, w, h = hand_rect

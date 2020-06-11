@@ -29,7 +29,7 @@ class face_model():
         self.process_this_frame = True
 
     def __call__(self, body, frame):
-        frame, head_rect = self.face_bbox(body, frame)
+        frame, head_rect = self.face_box(body, frame)
         # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_model uses)
         frame = frame[:, :, ::-1]
         # Only process every other frame of video to save time
@@ -49,8 +49,7 @@ class face_model():
                     name = self.face_names[best_match_index]
             return name, head_rect
 
-    @staticmethod
-    def face_bbox(body, frame):
+    def face_box(self, body, frame):
         head_points = [0, 15, 16, 17, 18]
         head = np.zeros([5, 3], dtype='float32')
         for k in range(5):
@@ -65,23 +64,4 @@ class face_model():
             return frame, head_rect
 
 
-    def recognize(self,frame):
-        self.face_rect.clear()
-        rgb_frame = frame[:, :, ::-1]
-        # Find all the faces and face enqcodings in the frame of video
-        face_locations = face_recognition.face_locations(rgb_frame)
-        face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
-        # Loop through each face in this frame of video
-        for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-            # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces(self.encodings, face_encoding)
-            name = "Unknown"
-            face_distances = face_recognition.face_distance(self.encodings, face_encoding)
-            best_match_index = np.argmin(face_distances)
-            if matches[best_match_index]:
-                self.face_names.append(best_match_index)
-            else:
-                self.face_names.append(-1)
-            self.face_rect.append((top, right, bottom, left))
-        return self.face_names, self.face_rect
 

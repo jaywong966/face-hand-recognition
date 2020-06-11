@@ -13,8 +13,10 @@ Recognize user gestures and faces based on face_recognition and openpose
 
 ## Installation
 ``` git clone <repositories> ```
-
-### face_recogntion
+### Openpose
+Unzip 3rdparty and model to project root path. This ‘3rdparty’ folder contains openpose python API Dependent file. **If you are not running under win10 and Nvdia platform, you must recompile openpose again**  
+```https://drive.google.com/file/d/1vfRpQ3feUDNvEzO1CtgvnvSKcgmyvphy/view?usp=sharing``` ---3rdparty and models
+### Face_recogntion
 Mac & Linux:  
 ``` pip3 install face_recognition ```  
 Windows:  
@@ -24,10 +26,7 @@ Windows:
 ## Train your own gesture
 
 You can collect your hand data by ``` data_collect.py ``` and train your SVM by ``` SVM_train.py ```
-## Other documents
-Unzip 3rdparty and model to project root path. This ‘3rdparty’ folder contains openpose python API Dependent file. **If you are not running under win10 and Nvdia platform, you must recompile openpose again** 
 
-```https://drive.google.com/file/d/1vfRpQ3feUDNvEzO1CtgvnvSKcgmyvphy/view?usp=sharing``` ---3rdparty and models
 ## References
 [Openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)  
-[face_recognition](https://github.com/ageitgey/face_recognition)
+[Face_recognition](https://github.com/ageitgey/face_recognition)
